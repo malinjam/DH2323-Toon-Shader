@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DH2323-Toon-Shader</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1> DH2323-Toon-Shader </h1>
+        <hr>
+        <p>
+            Hello! <br />
+            We, Ferran Campos Llopart (<a href="mailto:ferrancl@kth.se">ferrancl@kth.se</a>), Malin Malin Jauad Almeida Marques 
+            (<a href="mailto:malinjam@kth.se">malinjam@kth.se</a>), and Maria Zelenika (<a href="mailto:zelenika@kth.se">zelenika@kth.se</a>),
+            are first-year master students studying Interactive Media Technology at KTH Royal Institute of Technology in Stockholm, Sweden. <br />
+
+            We have created this blog as part of our project for the course Computer Graphics with Interaction (DH2323). Our project focuses on developing
+            a toon-shader and conducting a perceptual study to analyze how different shapes influence the perception of glossiness. Through this blog, we
+            aim to share insights about our project, including the techniques employed, our experiences, both the mistakes and successes, in reverse chronological order. <br />
+
+            To access the code, Unity project, and this blog, please visit our <a href="https://github.com/malinjam/DH2323-Toon-Shader">Github repository</a>. <br />
+            You can download our <a href="img/DH2323_Project_specification.pdf" download="DH2323-Toon-shader">report</a> and
+            <a href="img/DH2323_Project_specification.pdf" download="DH2323-Toon-shader">specification</a>.
+        </p>
+
+        <hr>
+        <h2>
+            Implementation of materials
+        </h2>
+        <h3>
+            15 May, 2023
+        </h3>
+        <p>
+            We implemented various materials (glass, iron, gold metal, clay, metallic blue, metallic silver, stone, leather, red paint, opal) taking inspiration
+            from the videogame Zelda: Breath of the Wild. <br />
+            PHOTOS <br />
+            We noticed that...
+        </p>
+        
+        <hr>
+        <h2>
+            Tough decisions
+        </h2>
+        <h3>
+            12 May, 2023
+        </h3>
+        <p>
+            We were unable to find papers on toon-shading perception, ask professor for help through emails, defined our idea more firmly and got this great
+            <a href="https://graphics.cs.kuleuven.be/publications/VangorpPhD/">paper</a>.
+            This study does however not use a toon shader and renders different materials using information from a database (not publicly available). We are 
+            unable to find a similar database that provides material information for toon shaders. We think we can solve this by rendering different materials 
+            by recreating them by looking at objects from a videogame that uses toon shading.
+        </p>
+        
+        <hr>
+        <h2>
+            Finding 3D objects
+        </h2>
+        <h3>
+            11 May, 2023
+        </h3>
+        <p>
+            We found a <a href="https://free3d.com/">website</a> where we were able to get free 3D objects with which we could conduct our perceptual study. We
+            also used 3D objects (sphere, cilinder, capsule) already available in Unity. <br />
+            PHOTOS <br />
+            Links:
+            <a href="https://free3d.com/3d-model/kitchen-knife-769920.html">knife</a>
+            <a href="https://free3d.com/3d-model/chocolate-rabbit-v1--900314.html">rabbit</a>
+            <a href="https://free3d.com/3d-model/teapot-15884.html">teapot</a>
+            <a href="https://free3d.com/3d-model/triceratops-v2--670338.html">triceratops</a>
+            <a href="https://free3d.com/3d-model/low-poly-car-40967.html">car</a>
+            <a href="https://free3d.com/3d-model/low-poly-rock-4631.html">rock</a>
+            <a href="https://free3d.com/3d-model/dragon-27353.html">dragon</a>
+        </p>
+        
+        <hr>
+        <h2>
+            Implementation of a toon-shader
+        </h2>
+        <h3>
+            03 May, 2023
+        </h3>
+        <p>
+            We implemented a toon-shader by following this <a href="https://roystan.net/articles/toon-shader/">tutorial</a>.
+        </p>
+
+        <hr>
+        <h2>
+            Project specification
+        </h2>
+        <h3>
+            28 April, 2023
+        </h3>
+        <p>
+            We made a project specification and got some valuable feedback.
+        </p>
+
+        <hr>
+        <h2>
+            Searching for papers and tutorials
+        </h2>
+        <h3>
+            27 April, 2023
+        </h3>
+        <p>
+            We found the following papers and links: <br />
+            <a href="https://roystan.net/articles/toon-shader/">https://roystan.net/articles/toon-shader/</a> <br />
+            <a href="https://github.com/Unchained112/CelShadingProject_ComputerGraphics-Interaction">https://github.com/Unchained112/CelShadingProject_ComputerGraphics-Interaction</a> <br />
+            <a href="https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S12/final_projects/hutchins_kim.pdf">https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S12/final_projects/hutchins_kim.pdf</a> <br />
+            <a href="https://doi.org/10.1145/1124728.1124749">https://doi.org/10.1145/1124728.1124749</a> <br />
+        </p>
+
+        <hr>
+        <h2>
+            Blog and Github setup
+        </h2>
+        <h3>
+            26 April, 2023
+        </h3>
+        <p>
+            The blog and Github repository are up and running.
+        </p>
+    </div>
+</body>
+</html>
