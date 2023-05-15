@@ -1,9 +1,12 @@
 Shader "Custom/NewSurfaceShader"
 {
 	
+
+	
 	Properties
 	{
-		_Color("Color", Color) = (1,1,1,1)
+		_ColorA("ColorA", Color) = (1,1,1,1)
+		_ColorB("ColorB", Color) = (1,1,1,1)
 		_MainTex("Main Texture", 2D) = "white" {}
 
 	[HDR]
@@ -74,7 +77,8 @@ SubShader
 				return o;
 			}
 
-			float4 _Color;
+			float4 _ColorA;
+			float4 _ColorB;
 
 			float4 _AmbientColor;																	//variable for ambiance
 
@@ -110,7 +114,7 @@ SubShader
 
 				float4 sample = tex2D(_MainTex, i.uv);
 
-				return _Color * sample * (_AmbientColor + light + specular + rim);				//final colour returned based on sample, and taking into consideration, ambience, light intensity adn specular gloss
+				return _ColorA * _ColorB * sample * (_AmbientColor + light + specular + rim);				//final colour returned based on sample, and taking into consideration, ambience, light intensity adn specular gloss
 			}
 			ENDCG
 		}
