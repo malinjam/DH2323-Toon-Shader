@@ -99,7 +99,7 @@ Shader "Custom/ToonWardV2"
 
 						float diffuse = _pd / 3.1415;
 
-						_roughness = floor( _roughness  * 10) / 10;
+						_roughness = ceil( _roughness  * 10) / 10;
 
 						if(_roughness == 0){
 							_roughness = 0.0001;
@@ -120,7 +120,7 @@ Shader "Custom/ToonWardV2"
 						//There should be more bands if the material is rougher, since it is less glossy, and therefore, should have a less sharper transition
 						//float bandNumber = floor( _roughness  * 10) / 10;
 
-						float bandNumber = floor( _roughness  * 10);
+						float bandNumber = ceil( _roughness  * 10);
 
 						//The glossiest part of the material is achieved when the dot product of the halfVector and the surface normal is 1 (they are perpendicular).
 						//We simulate this values here, in order to know how much light we will recieve from this part. And we'll later use it as the maximum threshold.
