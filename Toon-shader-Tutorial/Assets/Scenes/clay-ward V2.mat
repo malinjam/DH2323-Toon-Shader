@@ -76,9 +76,9 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _pd: 2.54
-    - _ps: 3.05
-    - _roughness: 0.5
+    - _pd: 0.7
+    - _ps: 0.5
+    - _roughness: 1.7
     m_Colors:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     - _Color: {r: 0.54901963, g: 0.3019608, b: 0.17254902, a: 1}

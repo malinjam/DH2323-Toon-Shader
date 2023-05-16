@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: gold-ward
-  m_Shader: {fileID: 4800000, guid: 9cd90742083dfd24e9715996b9fbf4e5, type: 3}
+  m_Shader: {fileID: 4800000, guid: bd7639be5fc188b46b4f51c0ac2f45f5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -76,9 +76,9 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _pd: 1.5
-    - _ps: 5
-    - _roughness: 1
+    - _pd: 0.1
+    - _ps: 0.33
+    - _roughness: 0.2
     m_Colors:
     - _AmbientColor: {r: 0.07450981, g: 0.047058824, b: 0.007843138, a: 0.5019608}
     - _Color: {r: 0.68235296, g: 0.454902, b: 0.08627451, a: 1}

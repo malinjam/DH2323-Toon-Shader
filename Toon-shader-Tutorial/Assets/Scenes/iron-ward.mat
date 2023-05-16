@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: iron-ward
-  m_Shader: {fileID: 4800000, guid: 9cd90742083dfd24e9715996b9fbf4e5, type: 3}
+  m_Shader: {fileID: 4800000, guid: bd7639be5fc188b46b4f51c0ac2f45f5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
