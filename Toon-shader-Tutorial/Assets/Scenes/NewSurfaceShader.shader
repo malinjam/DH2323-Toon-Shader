@@ -104,7 +104,7 @@ SubShader
 				float4 specular = specularIntensitySmooth * _SpecularColor;							//creates a sharper edge for the toon style
 
 				float4 rimDot = 1 - dot(viewDir, normal);											//variable for rimlight size
-				float rimIntensity = rimDot * pow(NdotL, _RimThreshold);;							//initialises rim size to be on the illuminated side of the object pow(decides length of the edge)
+				float rimIntensity = rimDot * pow(NdotL, _RimThreshold);							//initialises rim size to be on the illuminated side of the object pow(decides length of the edge)
 				rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);		//for harsher rim edge for the toon effect
 				float4 rim = rimIntensity * _RimColor;												//to incorporate rim color
 

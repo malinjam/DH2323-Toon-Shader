@@ -6,7 +6,6 @@ Shader "Custom/ToonWard"
 		_ps ("ps", float) = 0.0
 		_pd ("pd", float) = 0.0
 		_roughness("Roughness", float) = 0.0
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
 
 		[HDR]
 		_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)	
@@ -85,10 +84,12 @@ Shader "Custom/ToonWard"
 					float lightIntensity = smoothstep(0, 0.01, dotLN * shadow);							//flattens shadows (removes airbrush effect) and incorporates ambient light and shadows casted from other objects
 					float4 light = lightIntensity * _LightColor0;
 					float4 rim = 0.0;
+					float specularIntensitySmooth;
 					if (dotLN < 0.0) // light source on the wrong side?
 					{
 						float diffuse = _pd / 3.1415;
 						specularReflection = float3(0.0, 0.0, 0.0); // no specular reflection
+						specularIntensitySmooth = specularReflection;
 					}
 					else // light source on the right side
 					{
@@ -96,10 +97,14 @@ Shader "Custom/ToonWard"
 						float phi_o = dot(viewDirection, normal);
 						float phi_h = acos(dot(halfVector, normal));
 
+						float rougnessStep = floor(_roughness * 10) / 10;	
 						float diffuse = _pd / 3.1415;
-						float specular = _ps / (4 * 3.1415 * pow(_roughness, 2) * sqrt(cos(phi_i) * cos(phi_o)));
-						specularReflection = diffuse + specular * exp(-(pow(tan(phi_h),2.0) / pow(_roughness,2.0)));
+						float specular = _ps / (4 * 3.1415 * pow(rougnessStep, 2) * sqrt(cos(phi_i) * cos(phi_o)));
 
+						float totalReflection = diffuse + specular * exp(-(pow(tan(0),2.0) / pow(rougnessStep ,2.0))); 	//tan(0) was originally tan(phi_h)
+
+						specularReflection = totalReflection * (floor(dot(halfVector,normal) * 10) / 10);
+					
 						float4 rimDot = 1 - dot(viewDirection, normal);											//variable for rimlight size
 						float rimIntensity = rimDot * pow(dotLN, _RimThreshold);								//initialises rim size to be on the illuminated side of the object pow(decides length of the edge)
 						rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);			//for harsher rim edge for the toon effect
