@@ -28,6 +28,39 @@
 
         <hr>
         <h2>
+            A lot of progress
+        </h2>
+        <h3>
+            16 May, 2023
+        </h3>
+        <p>
+            We found a <a href="https://www.merl.com/brdf/">database</a> with a 100 different materials implemented. <br />
+            <div class="image_container">
+                <img src="img/1.jfif" alt="Ward BRDF model formula">
+            </div> <br />
+            <div class="image_container">
+                <img src="img/2.jfif" alt="Ward BRDF model formula">
+            </div> <br />
+            It is using the Bidirectional Reflectance Distribution Function (BRDF), which is a general reflection model that can be used to represent a
+            wide range of materials and surfaces, including both smooth and rough surfaces. It provides a flexible and versatile representation that can capture various
+            reflection behaviors. <br />
+            Unfortunately, that is not the goal of this study, since we want to used the Ward BRDF model, which is particularly suited for representing
+            glossy or specular surfaces with microfacet structures. It is often used to simulate materials like metals or plastics, where the microfacet orientation and
+            roughness play a significant role in the reflection properties. <br />
+            So we tried to implement this formula mentioned in this <a href="https://cseweb.ucsd.edu/~ravir/npr_materials.pdf">Bousseau et al.'s paper</a>: <br />
+            <div class="image_container">
+                <img src="img/2.png" alt="Ward BRDF model formula">
+            </div> <br />
+            We then modified our materials to use our now Toon-Ward-shader: <br />
+            PHOTOS <br />
+            We merged the different branches in Github so as to have the 3D objects and materials in the same place: <br />
+            <div class="image_container">
+                <img src="img/1.png" alt="3D objects and materials merged into one scene">
+            </div>
+        </p>
+        
+        <hr>
+        <h2>
             Implementation of materials
         </h2>
         <h3>
@@ -36,8 +69,8 @@
         <p>
             We implemented various materials (glass, iron, gold metal, clay, metallic blue, metallic silver, stone, leather, red paint, opal) taking inspiration
             from the videogame Zelda: Breath of the Wild. <br />
-            PHOTOS <br />
-            We noticed that...
+            We noticed that... <br />
+            PHOTOS
         </p>
         
         <hr>

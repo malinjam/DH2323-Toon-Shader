@@ -24,6 +24,18 @@ body {
     position: relative;
 }
 
+.image_container {
+    display: flex;
+    justify-content: center;
+}
+
+.image_container img {
+    width: 80%;
+    height: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 hr {
     height: 3px;
     border-width: 0;
