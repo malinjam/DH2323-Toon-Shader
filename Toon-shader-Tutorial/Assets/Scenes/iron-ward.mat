@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: metallic blue
-  m_Shader: {fileID: 4800000, guid: cfa606cdf758749bcbafd5accf4632af, type: 3}
+  m_Name: iron-ward
+  m_Shader: {fileID: 4800000, guid: 9cd90742083dfd24e9715996b9fbf4e5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -63,23 +63,25 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 8.49
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimAmount: 0.716
-    - _RimThreshold: 0.1
+    - _RimAmount: 0.572
+    - _RimThreshold: 0.716
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - _pd: 0
+    - _ps: 1
+    - _roughness: 1
     m_Colors:
-    - _AmbientColor: {r: 0.007843138, g: 0.18431373, b: 0.3254902, a: 1}
-    - _Color: {r: 0.03137255, g: 0.5372549, b: 0.77254903, a: 1}
+    - _AmbientColor: {r: 0.18039216, g: 0.16862746, b: 0.16862746, a: 0.5019608}
+    - _Color: {r: 0.63529414, g: 0.627451, b: 0.59607846, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.019607844, g: 0.52156866, b: 0.79607844, a: 1}
-    - _SpecularColor: {r: 0.07058824, g: 0.7921569, b: 0.9372549, a: 1}
+    - _RimColor: {r: 2, g: 2, b: 2, a: 1}
   m_BuildTextureStacks: []
