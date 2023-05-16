@@ -63,7 +63,7 @@ Shader "Custom/Ward"
 				float4 frag (v2f i) : SV_Target															//fragment shader
 				{
 					float3 normal = normalize(i.worldNormal);											//Surface Normal
-					float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.pos);					//View Vector
+					float3 viewDirection = normalize(i.viewDir);					//View Vector
 					float3 lightDirection = normalize(_WorldSpaceLightPos0 );					//Light Vector		
 					float3 halfVector = normalize(viewDirection + lightDirection);					//Halfway vector
 

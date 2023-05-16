@@ -99,9 +99,12 @@ Shader "Custom/ToonWard"
 
 						float diffuse = _pd / 3.1415;
 
+						_roughness = floor( _roughness  * 10) / 10;
+
 						if(_roughness == 0){
 							_roughness = 0.0001;
 						}
+
 
 						//Original specular reflection, using the Ward Model. This code provide us the specular reflection in a given pixel, however we need to 
 						//play with these values to make it toonish. We need to make the transition to the glossy part 'sharper' to make it look toonish, however, we
@@ -131,7 +134,6 @@ Shader "Custom/ToonWard"
 						//Between bands needs to be sharp, but such sharpness is dependant on the _roughness of the material
 						float diff = (totalReflection - noReflection) / bandNumber;
 
-
 						//We now group our pixel in one of our bands, depending on whose value is closer to
 						if(bandNumber == 0){
 							specularReflection = noReflection;
@@ -140,6 +142,8 @@ Shader "Custom/ToonWard"
 								float aboveThreshold = noReflection + diff * (i + 1);
 								float belowThreshold = noReflection + diff * i;
 								
+								
+
 								if (originalReflection >= belowThreshold && (originalReflection < aboveThreshold)){
 									float diffBelow = abs(originalReflection - belowThreshold);
 									float diffAbove = abs(originalReflection - aboveThreshold);
@@ -150,6 +154,7 @@ Shader "Custom/ToonWard"
 									}
 								}
 						}
+
 
 							/*
 							if( (originalReflection > noReflection + diff * i) && (originalReflection < noReflection + diff * (i+1))){
