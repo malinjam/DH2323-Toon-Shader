@@ -67,25 +67,65 @@
             15 May, 2023
         </h3>
         <p>
-            We implemented various materials (glass, iron, gold metal, clay, metallic blue, metallic silver, stone, leather, red paint, opal) taking inspiration
-            from the videogame Zelda: Breath of the Wild. <br />
-            We noticed that... <br />
-            PHOTOS
+            We implemented various materials (glass, iron, gold metal, clay, metallic blue, metallic silver, stone, leather, red paint, pearl opal), taking inspiration
+             from the videogame "The Legend of Zelda: Breath of the Wild". Below, you can see all the materials made with the images used for reference. <br />
+            <div class="image_container">
+                <img src="img/glass.png" alt="glass material">
+            </div>
+            <div class="image_container">
+                <img src="img/iron.png" alt="iron material">
+            </div>
+            <div class="image_container">
+                <img src="img/gold.png" alt="gold material">
+            </div>
+            <div class="image_container">
+                <img src="img/clay.png" alt="clay material">
+            </div>
+            <div class="image_container">
+                <img src="img/blue.png" alt="metallic blue material">
+            </div>
+            <div class="image_container">
+                <img src="img/silver.png" alt="metallic silver material">
+            </div>
+            <div class="image_container">
+                <img src="img/stone.png" alt="stone material">
+            </div>
+            <div class="image_container">
+                <img src="img/leather.png" alt="leather material">
+            </div>
+            <div class="image_container">
+                <img src="img/red.png" alt="red paint material">
+            </div>
+            <div class="image_container">
+                <img src="img/pearl.png" alt="pearl_opal material">
+            </div> <br/>
+            We noticed that in the videogame the creators seem to avoid having windows directly visible, which makes sense since when you use a toon-shader it is hard to 
+            make them since it often simplifies or stylizes reflections, so they might have opted for a more straightforward approach rather than attempting to create physically 
+            accurate reflections. And we experienced sometimes being unable to see the various parts of our shader, such as the difference in glossiness, since when you use a lighter 
+            color for the object, you need a higher glossiness, that is contrast, in order to see it, while the opposite is true for darker objects. This was confirmed by 
+            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/4299/0000/Psychophysically-based-model-of-surface-gloss-perception/10.1117/12.429501.short?SSO=1">Pellacini et al.'s paper</a>.
         </p>
         
         <hr>
         <h2>
-            Tough decisions
+            Made tough decisions
         </h2>
         <h3>
             12 May, 2023
         </h3>
         <p>
-            We were unable to find papers on toon-shading perception, ask professor for help through emails, defined our idea more firmly and got this great
-            <a href="https://graphics.cs.kuleuven.be/publications/VangorpPhD/">paper</a>.
-            This study does however not use a toon shader and renders different materials using information from a database (not publicly available). We are 
-            unable to find a similar database that provides material information for toon shaders. We think we can solve this by rendering different materials 
-            by recreating them by looking at objects from a videogame that uses toon shading.
+            We were unable to find papers on toon-shading perception, asked the professor for help through emails, defined our idea more firmly, and got this great 
+            <a href="https://graphics.cs.kuleuven.be/publications/VangorpPhD/">Vangorp's paper</a>.
+            This study, however, does not use a toon-shader and renders different materials using information from a database (not publicly available). We are unable 
+            to find a similar database that provides material information for toon shaders. We think we can solve this by rendering different materials and recreating 
+            them by looking at objects from a videogame that uses toon-shading. Many popular franchises, such as "The Legend of Zelda: Breath of the Wild" (first image below),
+             and "Borderlands" (second image below) have adopted toon-shading to great effect, so we are planning to use one of them.
+            <div class="image_container">
+                <img src="img/zelda.png" alt="The Legend of Zelda: Breath of the Wild">
+            </div>
+            <div class="image_container">
+                <img src="img/Borderlands1.jpg" alt="Borderlands">
+            </div>
         </p>
         
         <hr>
@@ -97,8 +137,10 @@
         </h3>
         <p>
             We found a <a href="https://free3d.com/">website</a> where we were able to get free 3D objects with which we could conduct our perceptual study. We
-            also used 3D objects (sphere, cilinder, capsule) already available in Unity. <br />
-            PHOTOS <br />
+            also used 3D objects (sphere, cilinder, and capsule) already available in Unity. <br />
+            <div class="image_container">
+                <img src="img/3.png" alt="3D models">
+            </div> <br />
             Links:
             <a href="https://free3d.com/3d-model/kitchen-knife-769920.html">knife</a>
             <a href="https://free3d.com/3d-model/chocolate-rabbit-v1--900314.html">rabbit</a>
@@ -117,7 +159,11 @@
             03 May, 2023
         </h3>
         <p>
-            We implemented a toon-shader by following this <a href="https://roystan.net/articles/toon-shader/">tutorial</a>.
+            We implemented a toon-shader by following this <a href="https://roystan.net/articles/toon-shader/">tutorial</a>. The code is written with Unity's ShaderLab 
+            language. It defines a shader called "Custom/NewSurfaceShader" that creates a specific visual effect on a surface to make the sphere you see below toon-like.
+            <div class="image_container">
+                <img src="img/4.png" alt="3D models">
+            </div> <br />
         </p>
 
         <hr>
@@ -128,7 +174,7 @@
             28 April, 2023
         </h3>
         <p>
-            We made a project specification and got some valuable feedback.
+            We wrote a project specification and got some valuable feedback.
         </p>
 
         <hr>
@@ -139,11 +185,16 @@
             27 April, 2023
         </h3>
         <p>
-            We found the following papers and links: <br />
+            In this project, we decided that our focus is going to be on toon-shading (or cel-shading), a non-photorealistic rendering technique that gives a mesh a cartoonish appearance and a 
+            hand-drawn feel in the final render. This technique has been used in the animation industry for years and has been applied in video games. Conventional Toon Shading  
+            utilises the orientation of a 1D texture in relation to a light source to determine the color of a given area. This is done by extending the Lambertian shading model 
+            and thereby deciding the colour of an area. This style of shading renders every surface location with full accuracy, thereby allowing even small shape features to be 
+            rendered by the shader. <br />
+            We found the following papers and links that look interesting and are a good starting point: <br />
             <a href="https://roystan.net/articles/toon-shader/">https://roystan.net/articles/toon-shader/</a> <br />
             <a href="https://github.com/Unchained112/CelShadingProject_ComputerGraphics-Interaction">https://github.com/Unchained112/CelShadingProject_ComputerGraphics-Interaction</a> <br />
             <a href="https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S12/final_projects/hutchins_kim.pdf">https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S12/final_projects/hutchins_kim.pdf</a> <br />
-            <a href="https://doi.org/10.1145/1124728.1124749">https://doi.org/10.1145/1124728.1124749</a> <br />
+            <a href="https://doi.org/10.1145/1124728.1124749">https://doi.org/10.1145/1124728.1124749</a>          
         </p>
 
         <hr>
@@ -154,7 +205,7 @@
             26 April, 2023
         </h3>
         <p>
-            The blog and Github repository are up and running.
+            The blog and Github repository are up and running!
         </p>
     </div>
 </body>
