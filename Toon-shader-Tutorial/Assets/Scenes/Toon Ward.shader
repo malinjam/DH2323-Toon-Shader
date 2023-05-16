@@ -97,14 +97,72 @@ Shader "Custom/ToonWard"
 						float phi_o = dot(viewDirection, normal);
 						float phi_h = acos(dot(halfVector, normal));
 
-						float rougnessStep = floor(_roughness * 10) / 10;	
 						float diffuse = _pd / 3.1415;
-						float specular = _ps / (4 * 3.1415 * pow(rougnessStep, 2) * sqrt(cos(phi_i) * cos(phi_o)));
 
-						float totalReflection = diffuse + specular * exp(-(pow(tan(0),2.0) / pow(rougnessStep ,2.0))); 	//tan(0) was originally tan(phi_h)
+						if(_roughness == 0){
+							_roughness = 0.0001;
+						}
 
-						specularReflection = totalReflection * (floor(dot(halfVector,normal) * 10) / 10);
-					
+						//Original specular reflection, using the Ward Model. This code provide us the specular reflection in a given pixel, however we need to 
+						//play with these values to make it toonish. We need to make the transition to the glossy part 'sharper' to make it look toonish, however, we
+						//also want to be able to modify such 'sharpness' in order to study it in our perception study. We explain the steps to reach there further below.
+						float specular = _ps / (4 * 3.1415 * pow(_roughness, 2) * sqrt(cos(phi_i) * cos(phi_o)));
+						float originalReflection = diffuse + specular * exp(-(pow(tan(phi_h),2.0) / pow(_roughness ,2.0)));
+
+						//Toon SPECULAR REFLECTION
+
+						//The rougher the material, the more light it will diffuse. The less rougher, the more glossier it is. 
+
+						//Number of bands (this simulates a sharper or not as sharper transition to the glossy part). If there are more bands, then the transition is less sharp
+						//There should be more bands if the material is rougher, since it is less glossy, and therefore, should have a less sharper transition
+						//float bandNumber = floor( _roughness  * 10) / 10;
+
+						float bandNumber = floor( _roughness  * 10);
+
+						//The glossiest part of the material is achieved when the dot product of the halfVector and the surface normal is 1 (they are perpendicular).
+						//We simulate this values here, in order to know how much light we will recieve from this part. And we'll later use it as the maximum threshold.
+						//Therefore, we set tan(0) instead of tan(phi_h), since phi_h (which is the acos of the dot product between the halfVector and the normal (1.0f) --> and therefore is value will be 0.0f).
+						float totalReflection = diffuse + specular * exp(-(pow(tan(0),2.0) / pow(_roughness ,2.0)));
+
+						//We perform the same, but now for the less glossiest part. It will serve us as the minimum threshold. In here we set tan(1) instead, as phi_h value will be 0 in the less glossiest part of the material
+						float noReflection = diffuse + specular * exp(-(pow(tan(1),2.0) / pow(_roughness ,2.0)));
+
+						//Now we get the difference between the thresholds, and divide it by the number of bands. Our goal is to make it look toonish, therefore the transition
+						//Between bands needs to be sharp, but such sharpness is dependant on the _roughness of the material
+						float diff = (totalReflection - noReflection) / bandNumber;
+
+
+						//We now group our pixel in one of our bands, depending on whose value is closer to
+						if(bandNumber == 0){
+							specularReflection = noReflection;
+						}else{
+							for(int i=0; i < bandNumber; i++){
+								float aboveThreshold = noReflection + diff * (i + 1);
+								float belowThreshold = noReflection + diff * i;
+								
+								if (originalReflection >= belowThreshold && (originalReflection < aboveThreshold)){
+									float diffBelow = abs(originalReflection - belowThreshold);
+									float diffAbove = abs(originalReflection - aboveThreshold);
+									if( diffBelow <= diffAbove){
+										specularReflection = belowThreshold;
+									}else{
+										specularReflection = aboveThreshold;
+									}
+								}
+						}
+
+							/*
+							if( (originalReflection > noReflection + diff * i) && (originalReflection < noReflection + diff * (i+1))){
+								specularReflection = noReflection + diff * i;
+							}*/
+						}
+
+
+						/* ORIGINAL WARD MODEL SPECULAR REFLECTION
+						float specular = _ps / (4 * 3.1415 * pow(_roughness, 2) * sqrt(cos(phi_i) * cos(phi_o)));
+						float totalReflection = diffuse + specular * exp(-(pow(tan(phi_h),2.0) / pow(_roughness ,2.0))); 	//tan(0) was originally tan(phi_h)
+						specularReflection = totalReflection ;
+						*/
 						float4 rimDot = 1 - dot(viewDirection, normal);											//variable for rimlight size
 						float rimIntensity = rimDot * pow(dotLN, _RimThreshold);								//initialises rim size to be on the illuminated side of the object pow(decides length of the edge)
 						rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);			//for harsher rim edge for the toon effect

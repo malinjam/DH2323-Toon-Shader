@@ -69,7 +69,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimAmount: 0.402
+    - _RimAmount: 0.456
     - _RimThreshold: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -77,8 +77,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _pd: 1
-    - _ps: 5.82
-    - _roughness: 1
+    - _ps: 1.73
+    - _roughness: 0.48
     m_Colors:
     - _AmbientColor: {r: 0.7924528, g: 0.72890705, b: 0.72890705, a: 1}
     - _Color: {r: 1, g: 0.5904733, b: 0, a: 1}
