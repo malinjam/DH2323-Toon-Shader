@@ -1,20 +1,17 @@
 Shader "Custom/NewSurfaceShader"
 {
 	
-
-	
 	Properties
 	{
-		_ColorA("ColorA", Color) = (1,1,1,1)
-		_ColorB("ColorB", Color) = (1,1,1,1)
+		_Color("Color", Color) = (1,1,1,0.5)
 		_MainTex("Main Texture", 2D) = "white" {}
 
 	[HDR]
-		_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)										//for ambient light on everything
+		_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,0.5)										//for ambient light on everything
 	
 
 	[HDR]																							//for specular highlights
-		_SpecularColor("Specular Color", Color) = (0.9,0.9,0.9,1)
+		_SpecularColor("Specular Color", Color) = (0.9,0.9,0.9,0.5)
 		_Glossiness("Glossiness", Float) = 32
 	
 
@@ -77,8 +74,7 @@ SubShader
 				return o;
 			}
 
-			float4 _ColorA;
-			float4 _ColorB;
+			float4 _Color;
 
 			float4 _AmbientColor;																	//variable for ambiance
 
@@ -108,13 +104,13 @@ SubShader
 				float4 specular = specularIntensitySmooth * _SpecularColor;							//creates a sharper edge for the toon style
 
 				float4 rimDot = 1 - dot(viewDir, normal);											//variable for rimlight size
-				float rimIntensity = rimDot * pow(NdotL, _RimThreshold);							//initialises rim size to be on the illuminated side of the object pow(decides length of the edge)
+				float rimIntensity = rimDot * pow(NdotL, _RimThreshold);;							//initialises rim size to be on the illuminated side of the object pow(decides length of the edge)
 				rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);		//for harsher rim edge for the toon effect
 				float4 rim = rimIntensity * _RimColor;												//to incorporate rim color
 
 				float4 sample = tex2D(_MainTex, i.uv);
 
-				return _ColorA * _ColorB * sample * (_AmbientColor + light + specular + rim);				//final colour returned based on sample, and taking into consideration, ambience, light intensity adn specular gloss
+				return _Color * sample * (_AmbientColor + light + specular + rim);				//final colour returned based on sample, and taking into consideration, ambience, light intensity adn specular gloss
 			}
 			ENDCG
 		}
