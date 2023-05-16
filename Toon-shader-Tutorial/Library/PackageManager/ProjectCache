@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638195221748236791
-    m_Hash: 469929462
+      ticks: 638197515583305302
+    m_Hash: 3047566814
   m_LockFileStatus:
     m_FilePath: C:/Users/maria/Desktop/code/DH2323 project/DH2323-Toon-Shader/Toon-shader-Tutorial/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638195221757406043
-    m_Hash: 3785963218
+      ticks: 638197515774800741
+    m_Hash: 3444843057
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
