@@ -28,6 +28,32 @@
 
         <hr>
         <h2>
+            Implementation of materials and perceptual study
+        </h2>
+        <h3>
+            17 May, 2023
+        </h3>
+        <p>
+            The implementation phase involved assigning the specific values to the chosen materials as follows: <br />
+            PHOTO (Implemented material values) <br />
+
+            Subsequently, we captured screenshots of the rendered materials and incorporated them into a survey created 
+            using Google Forms. The survey began with a brief introduction, followed by a request for participants' consent. 
+            We provided an explanation of glossiness, accompanied by examples of image pairs showcasing different objects and 
+            varying levels of glossiness. Participants were then presented with a series of 63 image pairs and prompted to answer 
+            the question, "Which object is more glossy?". <br />
+            PHOTO (survey) <br />
+
+            Once the survey was finalized, we proceeded to share it and aim to collect a minimum of 30 responses to ensure scientific 
+            relevance and statistical significance. <br />
+
+            While awaiting the responses, we have been actively working on writing and refining the project report and specification. 
+            This stage involves consolidating and documenting the study's methodology, findings, and conclusions to present a comprehensive 
+            research outcome.
+        </p>
+
+        <hr>
+        <h2>
             A lot of progress
         </h2>
         <h3>
@@ -50,13 +76,25 @@
             So we tried to implement this formula mentioned in this <a href="https://cseweb.ucsd.edu/~ravir/npr_materials.pdf">Bousseau et al.'s paper</a>: <br />
             <div class="image_container">
                 <img src="img/2.png" alt="Ward BRDF model formula">
-            </div> <br />
+            </div>
             We then modified our materials to use our now Toon-Ward-shader: <br />
             PHOTOS <br />
             We merged the different branches in Github so as to have the 3D objects and materials in the same place: <br />
             <div class="image_container">
                 <img src="img/1.png" alt="3D objects and materials merged into one scene">
+            </div>            
+            After consulting with our professor, we received valuable guidance and feedback that aided us in refining our approach and structuring our perceptual study. Additionally, we came across 
+            <a href="https://dl.acm.org/doi/pdf/10.1145/133994.134078">Ward's paper</a>, which provides specific parameter values for the isotropic formula mentioned earlier. These 
+            parameter values are depicted in the image below:
+            <div class="image_container">
+                <img src="img/5.png" alt="Parameters for isotropic materials calculated by Ward">
             </div>
+            To ensure a comprehensive investigation, we decided to select three different materials representing low (painted cardboard bow), normal (lightly brushed aluminum), and high (rolled brass) 
+            glossiness levels. Additionally, we will calculate two variations of the same material, each exhibiting low and high glossiness, respectively. By including these variations, we aim to determine 
+            if participants can effectively distinguish between different levels of glossiness in the perceptual study. The materials will use the same color scheme so as not to give hints to the specific 
+            material based on color and to focus solely on glossiness.
+
+            The chosen materials and their glossiness levels will be critical in examining potential differences in perception and discernment among participants.
         </p>
         
         <hr>
@@ -98,7 +136,7 @@
             </div>
             <div class="image_container">
                 <img src="img/pearl.png" alt="pearl_opal material">
-            </div> <br/>
+            </div>
             We noticed that in the videogame the creators seem to avoid having windows directly visible, which makes sense since when you use a toon-shader it is hard to 
             make them since it often simplifies or stylizes reflections, so they might have opted for a more straightforward approach rather than attempting to create physically 
             accurate reflections. And we experienced sometimes being unable to see the various parts of our shader, such as the difference in glossiness, since when you use a lighter 
@@ -137,10 +175,10 @@
         </h3>
         <p>
             We found a <a href="https://free3d.com/">website</a> where we were able to get free 3D objects with which we could conduct our perceptual study. We
-            also used 3D objects (sphere, cilinder, and capsule) already available in Unity. <br />
+            also used 3D objects (sphere, cilinder, and capsule) already available in Unity.
             <div class="image_container">
                 <img src="img/3.png" alt="3D models">
-            </div> <br />
+            </div>
             Links:
             <a href="https://free3d.com/3d-model/kitchen-knife-769920.html">knife</a>
             <a href="https://free3d.com/3d-model/chocolate-rabbit-v1--900314.html">rabbit</a>
@@ -163,7 +201,7 @@
             language. It defines a shader called "Custom/NewSurfaceShader" that creates a specific visual effect on a surface to make the sphere you see below toon-like.
             <div class="image_container">
                 <img src="img/4.png" alt="3D models">
-            </div> <br />
+            </div>
         </p>
 
         <hr>
