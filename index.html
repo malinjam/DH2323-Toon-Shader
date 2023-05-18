@@ -9,11 +9,11 @@
 
 <body>
     <div class="container">
-        <h1> DH2323-Toon-Shader </h1>
+        <h1> Toon-shading - Perception of glossiness </h1>
         <hr>
         <p>
             Hello! <br />
-            We, Ferran Campos Llopart (<a href="mailto:ferrancl@kth.se">ferrancl@kth.se</a>), Malin Malin Jauad Almeida Marques 
+            We, Ferran Campos Llopart (<a href="mailto:ferrancl@kth.se">ferrancl@kth.se</a>), Malin Jauad Almeida Marques 
             (<a href="mailto:malinjam@kth.se">malinjam@kth.se</a>), and Maria Zelenika (<a href="mailto:zelenika@kth.se">zelenika@kth.se</a>),
             are first-year master students studying Interactive Media Technology at KTH Royal Institute of Technology in Stockholm, Sweden. <br />
 
@@ -38,9 +38,10 @@
         </h3>
         <p>
             We managed to get 30 participants for our perceptual study, which is great. After processing the results we saw that the participants clearly favoured the triceratops,
-             but over all found the questions difficult. <br />
-            <br />
-            <img src="img/pie-ccombined.png" alt="Comparison between the preferences shown in the study between the sphere and triceratops objects shown in the study.">
+             but over all found the questions difficult.
+            <div class="image_container">
+                <img src="img/pies-combined.png" alt="Comparison between the preferences shown in the study between the sphere and triceratops objects shown in the study.">
+            </div>
             
             We also found that there was a difference between accuracy in gloss estimation between materials (the cardboard being the clearest).
             We then finished up writing our report. We elaborated more on the backgound and clarified the final implementation and method.
@@ -55,11 +56,7 @@
             17 May, 2023
         </h3>
         <p>
-            The implementation phase involved assigning the specific values to the chosen materials as follows:
-            <div class="image_container">
-                <img src="img/6.png" alt="Parameters used for the materials">
-            </div>
-            Subsequently, we captured screenshots of the rendered materials and incorporated them into a survey created 
+            We captured screenshots of the rendered materials and incorporated them into a survey created 
             using Google Forms. The survey starts with a concise introduction, followed by a request for participants' consent. 
             We provide an explanation of glossiness, along with illustrative examples (image below) of image pairs featuring diverse objects and 
             varying degrees of glossiness.
@@ -100,12 +97,28 @@
             Unfortunately, that is not the goal of this study, since we want to used the Ward BRDF model, which is particularly suited for representing
             glossy or specular surfaces with microfacet structures. It is often used to simulate materials like metals or plastics, where the microfacet orientation and
             roughness play a significant role in the reflection properties. <br />
-            So we tried to implement this formula mentioned in this <a href="https://cseweb.ucsd.edu/~ravir/npr_materials.pdf">Bousseau et al.'s paper</a>: <br />
+            So we tried to implement this formula mentioned in this <a href="https://cseweb.ucsd.edu/~ravir/npr_materials.pdf">Bousseau et al.'s paper</a>, where the parameters ρd represent the diffuse
+            reflectance, ρs represent the specular reflectance, α denotes the isotropic surface roughness parameter, and θi, θo, and θh represent the elevation angles of the
+            incident light direction ωi, the outgoing light direction ωo, and the halfway vector ωh, respectively: <br />
             <div class="image_container">
                 <img src="img/2.png" alt="Ward BRDF model formula">
             </div>
-            We then modified our materials to use our now Toon-Ward-shader: <br />
-            PHOTOS <br />
+            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/4299/1/Psychophysically-based-model-of-surface-gloss-perception/10.1117/12.429501.short?SSO=1">Pellacini et al.</a> demonstrated 
+            that, in general, lighter objects (high ρd) need more significant alterations in material properties compared to darker objects (low ρd) in order to generate noticeable variations in gloss. This is 
+            due to the fact that, for a fixed ρs (specular reflectance), lighter objects exhibit lower contrast gloss than darker objects. <br />
+            Moreover, they demonstrated that the space of gloss is composed of two dimensions: contrast (c) and sharpness (d), and defined an equation that computes the perceptual distance between two objects within the 
+            gloss space (Dij). Here are the formulas:
+            <div class="image_container">
+                <img src="img/c.png" alt="Definition of contrast (c) and sharpness (d) within the Ward’s light reflection model.">
+            </div>
+            <div class="image_container">
+                <img src="img/dij.png" alt="Perceptual distance equation of two objects within the gloss space.">
+            </div>
+
+            We then modified our materials to use our now Toon-Ward-shader and below you can see all the different shaders applied on a 3 spheres (from left to right: Toon-Ward-Shader; Ward-Shader; Toon-Shader):
+            <div class="image_container">
+                <img src="img/8.jpeg" alt="From left to right spheres rendered with: Toon-Ward-Shader; Ward-Shader; Toon-Shader">
+            </div>
             We merged the different branches in Github so as to have the 3D objects and materials in the same place: <br />
             <div class="image_container">
                 <img src="img/1.png" alt="3D objects and materials merged into one scene">
@@ -119,7 +132,15 @@
             To ensure a comprehensive investigation, we decided to select three different materials representing low (painted cardboard bow), normal (lightly brushed aluminum), and high (rolled brass) 
             glossiness levels. Additionally, we will calculate two variations of the same material, each exhibiting low and high glossiness, respectively. By including these variations, we aim to determine 
             if participants can effectively distinguish between different levels of glossiness in the perceptual study. The materials will use the same color scheme so as not to give hints to the specific 
-            material based on color and to focus solely on glossiness.
+            material based on color and to focus solely on glossiness. Below you can see two tables with "Material’s values and their variations in ρs" (first one) and "Perceptual Distance (Dij) between all
+             ρs variations within the same material, and their average distance within that material (μDij)". The implementation phase involved assigning the specific values to the chosen materials as follows:
+            <div class="image_container">
+                <img src="img/t1.png" alt="Material’s values and their variations in ρs">
+            </div>
+            <div class="image_container">
+                <img src="img/t2.png" alt="Perceptual Distance (Dij) between all ρs variations within the same material, and their average
+                distance within that material (μDij)">
+            </div>            
 
             The chosen materials and their glossiness levels will be critical in examining potential differences in perception and discernment among participants.
         </p>
