@@ -77,8 +77,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _pd: 0.37
-    - _ps: 0.96
-    - _roughness: 0.32
+    - _ps: 1.03
+    - _roughness: 0.33
     m_Colors:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     - _Color: {r: 0.54901963, g: 0.3019608, b: 0.17254902, a: 1}

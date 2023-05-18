@@ -12,7 +12,7 @@ Shader "Custom/ToonWardV2"
 		
 		[HDR]
 		_RimColor("Rim Color", Color) = (1,1,1,1)														//for rim light to define edges of the object
-		_RimAmount("Rim Amount", Range(0, 1)) = 0.716
+		_RimAmount("Rim Amount", Range(0, 1)) = 0.716													
 		_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
     }
 
@@ -72,9 +72,9 @@ Shader "Custom/ToonWardV2"
 				float4 frag (v2f i) : SV_Target															//fragment shader
 				{
 					float3 normal = normalize(i.worldNormal);											//Surface Normal
-					float3 viewDirection = normalize(i.viewDir);					//View Vector
-					float3 lightDirection = normalize(_WorldSpaceLightPos0 );					//Light Vector		
-					float3 halfVector = normalize(viewDirection + lightDirection);					//Halfway vector
+					float3 viewDirection = normalize(i.viewDir);										//View Vector
+					float3 lightDirection = normalize(_WorldSpaceLightPos0 );							//Light Vector		
+					float3 halfVector = normalize(viewDirection + lightDirection);						//Halfway vector
 
 					float3 specularReflection;
 
@@ -93,18 +93,20 @@ Shader "Custom/ToonWardV2"
 					}
 					else // light source on the right side
 					{
-						float phi_i = dotLN;
-						float phi_o = dot(viewDirection, normal);
-						float phi_h = acos(dot(halfVector, normal));
+						//Calculating angles
+						float phi_i = dotLN;							//Light in - Normal angle
+						float phi_o = dot(viewDirection, normal);		//Light out - Normal angle
+						float phi_h = acos(dot(halfVector, normal));	//Halfway - Normal angle
 
-						float diffuse = _pd / 3.1415;
+						float diffuse = _pd / 3.1415;					// pd calculation
 
+						//Making roughness not linear. It will now have steps of 0.1
 						_roughness = ceil( _roughness  * 10) / 10;
 
+						//When roughness equals 0, the shader becomes buggy. We set roughness to a value really close to 0 when that happens
 						if(_roughness == 0){
 							_roughness = 0.0001;
 						}
-
 
 						//Original specular reflection, using the Ward Model. This code provide us the specular reflection in a given pixel, however we need to 
 						//play with these values to make it toonish. We need to make the transition to the glossy part 'sharper' to make it look toonish, however, we
@@ -139,14 +141,19 @@ Shader "Custom/ToonWardV2"
 							specularReflection = noReflection;
 						}else{
 							for(int i=0; i < bandNumber; i++){
+								//We will now make the reflection toonish, by creating the contrast bands. 
+
+								//We first create an above threshold and below threshold.
 								float aboveThreshold = noReflection + diff * (i + 1);
 								float belowThreshold = noReflection + diff * i;
-								
-								
 
+								//Now, if the pixel is in between those two thresolds (is inside the band)
 								if (originalReflection >= belowThreshold && (originalReflection < aboveThreshold)){
+									//Now we check to which band the pixel is closer to (the higher or the lower band)
 									float diffBelow = abs(originalReflection - belowThreshold);
 									float diffAbove = abs(originalReflection - aboveThreshold);
+
+									//And sets the pixel color to the closest band. This will make the glossier part have sharper contrast steps
 									if( diffBelow <= diffAbove){
 										specularReflection = belowThreshold;
 									}else{

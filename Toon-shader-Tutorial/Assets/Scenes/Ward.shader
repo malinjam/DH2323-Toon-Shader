@@ -64,8 +64,8 @@ Shader "Custom/Ward"
 				{
 					float3 normal = normalize(i.worldNormal);											//Surface Normal
 					float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.pos);					//View Vector
-					float3 lightDirection = normalize(_WorldSpaceLightPos0 );					//Light Vector		
-					float3 halfVector = normalize(viewDirection + lightDirection);					//Halfway vector
+					float3 lightDirection = normalize(_WorldSpaceLightPos0 );							//Light Vector		
+					float3 halfVector = normalize(viewDirection + lightDirection);						//Halfway vector
 
 					float3 specularReflection;
 
@@ -81,12 +81,14 @@ Shader "Custom/Ward"
 					}
 					else // light source on the right side
 					{
-						float phi_i = dotLN;
-						float phi_o = dot(viewDirection, normal);
-						float phi_h = acos(dot(halfVector, normal));
+						//Calculating angles
+						float phi_i = dotLN;							//Light in - Normal angle
+						float phi_o = dot(viewDirection, normal);		//Light out - Normal angle
+						float phi_h = acos(dot(halfVector, normal));	//Halfway - Normal angle
 
-						float diffuse = _pd / 3.1415;
-						float specular = _ps / (4 * 3.1415 * pow(_roughness, 2) * sqrt(cos(phi_i) * cos(phi_o)));
+						//Applying Ward model formula
+						float diffuse = _pd / 3.1415;					
+						float specular = _ps / (4 * 3.1415 * pow(_roughness, 2) * sqrt(cos(phi_i) * cos(phi_o)));	
 						specularReflection = diffuse + specular * exp(-(pow(tan(phi_h),2.0) / pow(_roughness,2.0)));
 					}
 
