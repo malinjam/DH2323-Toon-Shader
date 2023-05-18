@@ -43,9 +43,9 @@
                 <img src="img/pies-combined.png" alt="Comparison between the preferences shown in the study between the sphere and triceratops objects shown in the study.">
             </div>
             
-            We also found that there was a difference between accuracy in gloss estimation between materials (the cardboard being the clearest).
-            We then finished up writing our report. We elaborated more on the backgound and clarified the final implementation and method.
-            Once the report was finished we reviewed the project specification, adn updated it to more acurately reflect the project
+            We also found that there was a difference in accuracy in gloss estimation between materials (cardboard being the clearest). We then finished writing our report. 
+            We elaborated more on the background and clarified the final implementation and method. Once the report was finished, we reviewed the project specification and updated it 
+            to more accurately reflect the project.
         </p>
 
         <hr>
@@ -84,7 +84,7 @@
             16 May, 2023
         </h3>
         <p>
-            We found a <a href="https://www.merl.com/brdf/">database</a> with a 100 different materials implemented.
+            We found a <a href="https://www.merl.com/brdf/">database</a> with a 100 different materials implemented. Here are some examples:
             <div class="image_container">
                 <img src="img/1.jfif" alt="Ward BRDF model formula">
             </div>
@@ -103,7 +103,7 @@
             <div class="image_container">
                 <img src="img/2.png" alt="Ward BRDF model formula">
             </div>
-            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/4299/1/Psychophysically-based-model-of-surface-gloss-perception/10.1117/12.429501.short?SSO=1">Pellacini et al.</a> demonstrated 
+            As mentioned before, <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/4299/1/Psychophysically-based-model-of-surface-gloss-perception/10.1117/12.429501.short?SSO=1">Pellacini et al.</a> demonstrated 
             that, in general, lighter objects (high ρd) need more significant alterations in material properties compared to darker objects (low ρd) in order to generate noticeable variations in gloss. This is 
             due to the fact that, for a fixed ρs (specular reflectance), lighter objects exhibit lower contrast gloss than darker objects. <br />
             Moreover, they demonstrated that the space of gloss is composed of two dimensions: contrast (c) and sharpness (d), and defined an equation that computes the perceptual distance between two objects within the 
@@ -132,8 +132,9 @@
             To ensure a comprehensive investigation, we decided to select three different materials representing low (painted cardboard bow), normal (lightly brushed aluminum), and high (rolled brass) 
             glossiness levels. Additionally, we will calculate two variations of the same material, each exhibiting low and high glossiness, respectively. By including these variations, we aim to determine 
             if participants can effectively distinguish between different levels of glossiness in the perceptual study. The materials will use the same color scheme so as not to give hints to the specific 
-            material based on color and to focus solely on glossiness. Below you can see two tables with "Material’s values and their variations in ρs" (first one) and "Perceptual Distance (Dij) between all
-             ρs variations within the same material, and their average distance within that material (μDij)". The implementation phase involved assigning the specific values to the chosen materials as follows:
+            material based on color and to focus solely on glossiness. <br />
+            Below you can see two tables with "Material’s values and their variations in ρs" (first one) and "Perceptual Distance (Dij) between all ρs variations within the same material, and their average 
+            distance within that material (μDij)". The implementation phase involved assigning the specific values to the chosen materials as follows:
             <div class="image_container">
                 <img src="img/t1.png" alt="Material’s values and their variations in ρs">
             </div>
